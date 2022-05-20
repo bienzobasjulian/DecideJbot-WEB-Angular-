@@ -20,7 +20,7 @@
 placeholder="Añade participante" 
 id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addParticipante()">
 
-<button class="btnAddParticipante"><i class="fa fa-plus" aria-hidden="true"></i></button>
+<button class="btnAddParticipante" (click)="addParticipante()"><i class="fa fa-plus" aria-hidden="true"></i></button>
 
 </div>   
    <ul>
