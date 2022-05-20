@@ -1,3 +1,5 @@
+/* Mobile first */
+
 .fullContainer {
   display: -webkit-flex;
   display: -moz-box;
@@ -48,7 +50,7 @@
 }
 
 .columnaSorteos {
-  width: 75%;
+  width: 100%;
 }
 
 .divIntroSorteo {
@@ -525,6 +527,7 @@
 }
 
 .columnaOtrosSorteos {
+  display: none;
   width: 25%;
   padding-right: 1.125rem;
   padding-left: 1.125rem;
@@ -792,10 +795,10 @@ body {
 }
 
 .form-control {
-  font-size: 26px;
+  
   font-weight: 700;
   text-align: center;
-  max-width: 50%;
+  max-width: 75%;
   margin-top: 8px;
   padding-top: 0;
   padding-bottom: 0;
@@ -812,3 +815,24 @@ body {
   box-shadow: none;
   color: #4caf50;
 }
+
+/* Tablet */
+
+media all and (min-width: 480px) {
+}
+
+
+
+/* PC */
+@media(min-width: 1024px){
+  .columnaSorteos {
+    width: 75%;
+  }
+
+  .columnaOtrosSorteos {
+    display: block;
+  }
+
+}
+
+
