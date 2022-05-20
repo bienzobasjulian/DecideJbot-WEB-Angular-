@@ -560,6 +560,20 @@
   border: none;
   outline: none;
   font-size: 16px;
+  display: none;
+}
+
+.infoPulsaIntro {
+  display: none;
+}
+
+.divInput input {
+  flex: 1;
+  padding: 10px;
+  outline: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 1px solid black;
 }
 
 .content ul li {
@@ -816,6 +830,26 @@ body {
   color: #4caf50;
 }
 
+.divInput {
+  position: relative;
+ 
+}
+
+
+.divInput button {
+  border-top-right-radius:10px;
+  border-bottom-right-radius:10px;
+  padding:10px;
+  border:1px solid black;
+
+}
+  
+
+.btnAddParticipante{
+  background-color: #4caf50;
+ 
+}
+
 /* Tablet */
 
 media all and (min-width: 480px) {
@@ -831,6 +865,18 @@ media all and (min-width: 480px) {
 
   .columnaOtrosSorteos {
     display: block;
+  }
+
+  .infoPulsaIntro {
+    display: block;
+  }
+
+  .content ul input {
+    display: block;
+  }
+
+  .divInput {
+    display: none;
   }
 
 }

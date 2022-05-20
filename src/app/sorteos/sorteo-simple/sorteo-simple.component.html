@@ -14,8 +14,15 @@
                 <fieldset class="fieldParticipantes" (click)="setFocusOnNewParticipante()">
                     <legend class="leyendaParticipantes"> Participantes </legend>
        <div class="content">
-   <p>Introduce un  participante y pulsa intro.</p>
-        
+   <p class="infoPulsaIntro">Introduce un  participante y pulsa intro.</p>
+   <div class="divInput">
+    <input #inputNewParticipante type="text" autocomplete="false" spellcheck="false"  
+placeholder="Añade participante" 
+id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addParticipante()">
+
+<button class="btnAddParticipante"><i class="fa fa-plus" aria-hidden="true"></i></button>
+
+</div>   
    <ul>
 
     <li *ngFor="let participante of participantes; let i = index" class="elementoParticipante"> 
@@ -24,10 +31,12 @@
         
     </li>
 
+   
     <input #inputNewParticipante type="text" autocomplete="false" spellcheck="false"  
     placeholder="Añade participante" 
     id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addParticipante()">
 </ul>
+
  </div>
        
       <div class="details">
