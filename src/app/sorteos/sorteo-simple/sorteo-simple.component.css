@@ -853,7 +853,7 @@ body {
 
 /* Tablet */
 
-media all and (min-width: 480px) {
+@media all and (min-width: 480px) {
 }
 
 
