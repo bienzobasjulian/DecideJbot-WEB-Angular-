@@ -851,6 +851,32 @@ body {
  
 }
 
+.btnAddParticipantes{
+
+  background-color: #4caf50;
+  color: white;
+  margin: 5px;
+  padding: 5px;
+}
+
+.btnReemplazarParticipantes{
+  background-color: #daed0b;
+  margin: 5px;
+  padding: 5px;
+}
+
+.btnEliminarParticipantes{
+  background-color: red;
+  color: white;
+  margin-left: 5px;
+  padding: 5px;
+}
+
+.btnDeleteAll{
+  background-color: red;
+  color: white;
+  padding: 5px;
+}
 /* Tablet */
 
 @media all and (min-width: 480px) {

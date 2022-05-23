@@ -96,10 +96,11 @@ id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addPartici
              <br>
         </div>
         
-        <div class="tableListaSorteos" *ngIf="mostrarTablaSorteosLocales">
+        <div class="tableListaSorteos" *ngIf="mostrarTablaSorteosLocales && sorteosLocales.length > 0">
             <table>
                <tr class="tituloTabla">
-                   <th colspan="3">Sorteos almacenados localmente</th>
+                   <th colspan="2">Sorteos almacenados localmente</th>
+                   <th><button class="btnDeleteAll" (click)=" showDeleteAllLocalesModal()"><i class="fa fa-trash"></i> Borrar todos</button></th>
                    <th class="closeTabla" (click)="mostrarTablaSorteosLocales = false">X</th>
                </tr>
                 <tr>
@@ -109,10 +110,14 @@ id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addPartici
                    
                 </tr>
 
-                <tr *ngFor="let sorteo of sorteosLocales">
+                <tr *ngFor="let sorteo of sorteosLocales; let i = index">
                     <td>Sorteo simple</td>
                     <td>{{sorteo.participantes}}</td>
-                    <td></td>
+                    <td>
+                        <button class="btnAddParticipantes" (click)="addParticipantes(sorteo.participantes)"><i class="fa fa-plus-circle"></i> Añadir</button>
+                        <button class="btnReemplazarParticipantes" (click)="showReplaceModal(sorteo.participantes)"><i class="fa fa-refresh"></i> Reemplazar</button>
+                        <button class="btnEliminarParticipantes" (click)="showDeleteSorteoLocalModal(i)"><i class="fa fa-trash-o"></i> Eliminar</button>
+                    </td>
                 </tr>
             </table>
         </div>

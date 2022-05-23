@@ -229,6 +229,90 @@ export class SorteoSimpleComponent implements OnInit {
    
   }
 
+  addParticipantes(participantesSeleccionados : string[]) {
+     participantesSeleccionados.forEach((item, index) => {
+      var valorParticipante = participantesSeleccionados[index];
+
+      if (!this.participantes.includes(valorParticipante)){
+        this.participantes.push(valorParticipante);
+      }
+     })
+  }
+
+  showReplaceModal(participantesSeleccionados: string[]){
+    
+    Swal.fire({
+      title: '¿Reemplazar participantes?',
+      text: 'Los participantes anteriores se perderán.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, reemplazar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#4caf50',
+      cancelButtonColor: 'red'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.replaceParticipantes(participantesSeleccionados);
+      }
+    })
+  }
+
+  replaceParticipantes(participantesSeleccionados: string[]){
+      this.participantes = participantesSeleccionados;
+  }
+
+  showDeleteSorteoLocalModal(index : number){
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'El sorteo se borrará del navegador actual',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#4caf50',
+      cancelButtonColor: 'red'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteSorteoLocal(index);
+      }
+    })
+  }
+
+  deleteSorteoLocal(index : number){
+      var sorteos : Sorteo[] = [];
+       sorteos = JSON.parse(localStorage.getItem('sorteos') || "") ;
+
+       sorteos.splice(index, 1),
+
+       this.sorteosLocales = sorteos;
+
+       localStorage.setItem('sorteos', JSON.stringify(sorteos) );
+
+      
+
+  } 
+
+  showDeleteAllLocalesModal(){
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Todos los sorteos almacenados localmente se eliminarán del navegador actual',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#4caf50',
+      cancelButtonColor: 'red'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteAllLocales();
+      }
+    })
+  }
+
+  deleteAllLocales(){
+      alert("TO DO: deleteAllLocales()");
+  }
+
   
 
   showSaveInfoModal(){
