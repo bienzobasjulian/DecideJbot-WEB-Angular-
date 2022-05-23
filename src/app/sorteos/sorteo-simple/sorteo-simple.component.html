@@ -5,7 +5,7 @@
         <div class="row">
             <div class="column columnaSorteos">
                 <div class="divIntroSorteo" *ngIf="!editInfoSorteo">
-                    <span class="titleSorteoSimple" > {{title}} </span>
+                    <span class="titleSorteoSimple" (dblclick)="showEditInfoSorteo()" > {{title}} </span>
                     <button class="btnEditarTitle" (click)="showEditInfoSorteo()"><i class="fa fa-pencil"></i></button>
                     <br>
                     <span class="descripcionSorteoSimple"> Crea un sorteo índicando únicamente los participantes y el número de premios. </span>
@@ -13,7 +13,8 @@
 
                  <div class="editInfoSorteo" *ngIf="editInfoSorteo">
                      <input type="text" class="titleSorteoSimple" 
-                     #inputTitleSorteo [(ngModel)]="title"> <button (click)=" saveTitleSorteo()">Guardar</button>
+                     #inputTitleSorteo [(ngModel)]="title" (keyup.enter)="saveTitleSorteo()"> 
+                     <button (click)=" saveTitleSorteo()" class="btnSaveTitleSorteo"><i class="fa fa-floppy-o"></i></button>
                      <br>
                      <span class="descripcionSorteoSimple"> Establece un título/descripción a tu sorteo (Si lo guardas, te podrá ser más fácil identificarlo) </span> 
                      
@@ -120,7 +121,7 @@ id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addPartici
                 </tr>
 
                 <tr *ngFor="let sorteo of sorteosLocales; let i = index">
-                    <td>Sorteo simple</td>
+                    <td>{{sorteo.titulo}}</td>
                     <td>{{sorteo.participantes}}</td>
                     <td>
                         <button class="btnAddParticipantes" (click)="addParticipantes(sorteo.participantes)"><i class="fa fa-plus-circle"></i> Añadir</button>
@@ -201,12 +202,12 @@ id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addPartici
                     <div class="titleGanadores">Ganadores:</div>
                     <div class="divListaGanadores">
                         <ol class="listaGanadores">
-                            <li *ngFor="let ganador of ganadores">{{ganador}}</li>
+                            <li *ngFor="let ganador of resultado.ganadores">{{ganador}}</li>
                         </ol>
                     </div>
 
                     <div class="infoResultados">
-                        <div class="fecha"><span>{{fechaSorteo | date:'dd/MM/yyyy HH:mm:ss'}}</span></div>
+                        <div class="fecha"><span>{{resultado.fecha | date:'dd/MM/yyyy HH:mm:ss'}}</span></div>
                        <div class="resultados_titleApp">
                           <span>DecideJbot</span>
                        </div>

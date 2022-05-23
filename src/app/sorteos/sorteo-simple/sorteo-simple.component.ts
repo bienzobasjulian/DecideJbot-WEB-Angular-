@@ -4,6 +4,7 @@ import { reduce } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Sorteo } from '../interfaces/sorteo.interface';
 import { SorteosService } from '../sorteos.service';
+import { Resultado } from '../interfaces/resultado.interface';
 
 @Component({
   selector: 'app-sorteo-simple',
@@ -30,6 +31,11 @@ export class SorteoSimpleComponent implements OnInit {
   ganadores : string[] = [];
   showDivResultados : boolean = false;
   hayResultados : boolean = false;
+  resultado !: Resultado;
+  sorteo : Sorteo = { 
+    titulo : this.title,
+    participantes : this.participantes
+  }
 
   mostrarCarga : boolean = false;
   tiempoCarga : number = 5;
@@ -200,6 +206,26 @@ export class SorteoSimpleComponent implements OnInit {
         
         this.hayResultados = true;
         this.fechaSorteo = new Date();
+
+       
+        const idResultado : string = 'SS' + this.fechaSorteo.getDay() + this.fechaSorteo.getMonth()  
+        + this.fechaSorteo.getFullYear()  + this.fechaSorteo.getHours() + this.fechaSorteo.getMinutes() 
+        + this.fechaSorteo.getSeconds() + this.fechaSorteo.getMilliseconds();
+
+        
+
+        this.resultado = {
+          id: idResultado,
+          fecha : this.fechaSorteo,
+          ganadores: this.ganadores,
+          sorteo: this.sorteo
+        }
+
+        console.log(this.resultado);
+
+
+
+
   }
 
   showAlert(mensajeError : string)
@@ -223,6 +249,7 @@ export class SorteoSimpleComponent implements OnInit {
 
   saveSorteoLocalmente(){
     let sorteo : Sorteo = {
+      titulo : this.title,
       participantes : this.participantes
     }
     var sorteos : Sorteo[] = [];

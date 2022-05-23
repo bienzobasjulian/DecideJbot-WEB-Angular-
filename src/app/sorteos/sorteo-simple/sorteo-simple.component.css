@@ -69,6 +69,18 @@
   text-align: center;
 }
 
+.btnSaveTitleSorteo{
+  margin: 0;
+  font-family: "Fredoka One", -apple-system, BlinkMacSystemFont, "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica", "Arial",
+    sans-serif;
+  font-weight: 900;
+  font-size: 2.125rem;
+  background-color: #4caf50;
+  text-align: center;
+  color: white;
+}
+
 .btnEditarTitle{
   font-weight: 900;
   font-size: 1rem;
@@ -660,7 +672,7 @@
 
 #textoCarga {
   position: relative;
-  font-size: 4em;
+  font-size: 2em;
   letter-spacing: 2.5px;
   font-family: sans-serif;
   border-bottom: 16px solid #333;
@@ -736,7 +748,7 @@ body {
   background-color: #fff;
   margin: auto;
   border-radius: 1rem;
-  width: 25%;
+  width: 50%;
   border: solid 2px #4caf50;
   margin-bottom: 2%;
 }
@@ -914,6 +926,12 @@ body {
 
   .divInput {
     display: none;
+  }
+
+  .containerGanadores {
+    
+    width: 25%;
+    
   }
 
 }
