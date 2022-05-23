@@ -205,7 +205,8 @@
 }
 
 .btnSortear,
-.btnRepetir {
+.btnRepetir, 
+.btnGuardarImagen {
   backface-visibility: hidden;
   position: relative;
   cursor: pointer;
@@ -224,10 +225,12 @@
   font-weight: 900;
   font-style: normal;
   text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+  margin-left: 10px;
 }
 
 .btnSortear > button,
-.btnRepetir > button {
+.btnRepetir > button,
+.btnGuardarImagen > button{
   color: #372;
   font-size: 10px;
   font-family: transcript;
@@ -238,7 +241,8 @@
 }
 
 .btnSortear > i,
-.btnRepetir > i {
+.btnRepetir > i,
+.btnGuardarImagen > i {
   color: #372;
   font-size: 1.1em;
   background: #fff;

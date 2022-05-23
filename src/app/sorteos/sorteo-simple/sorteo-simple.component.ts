@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { Sorteo } from '../interfaces/sorteo.interface';
 import { SorteosService } from '../sorteos.service';
 import { Resultado } from '../interfaces/resultado.interface';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-sorteo-simple',
@@ -226,6 +227,19 @@ export class SorteoSimpleComponent implements OnInit {
 
 
 
+  }
+
+  saveResultadosImg(){
+
+    var divResultados : HTMLElement = document.getElementById("containerGanadores")!;
+    html2canvas(divResultados).then(function(canvas) {
+      var a = document.createElement('a');
+      a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+      a.download = 'resultados.jpg';
+      a.click();
+
+     
+  });
   }
 
   showAlert(mensajeError : string)
