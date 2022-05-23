@@ -4,10 +4,19 @@
     <div class="contenedorContenido">
         <div class="row">
             <div class="column columnaSorteos">
-                <div class="divIntroSorteo">
-                    <span class="titleSorteoSimple" > Sorteo Simple </span>
+                <div class="divIntroSorteo" *ngIf="!editInfoSorteo">
+                    <span class="titleSorteoSimple" > {{title}} </span>
+                    <button class="btnEditarTitle" (click)="showEditInfoSorteo()"><i class="fa fa-pencil"></i></button>
                     <br>
                     <span class="descripcionSorteoSimple"> Crea un sorteo índicando únicamente los participantes y el número de premios. </span>
+                 </div>
+
+                 <div class="editInfoSorteo" *ngIf="editInfoSorteo">
+                     <input type="text" class="titleSorteoSimple" 
+                     #inputTitleSorteo [(ngModel)]="title"> <button (click)=" saveTitleSorteo()">Guardar</button>
+                     <br>
+                     <span class="descripcionSorteoSimple"> Establece un título/descripción a tu sorteo (Si lo guardas, te podrá ser más fácil identificarlo) </span> 
+                     
                  </div>
 
                  <div class="divSorteoSimple"> 

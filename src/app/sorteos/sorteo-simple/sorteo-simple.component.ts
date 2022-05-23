@@ -14,19 +14,23 @@ export class SorteoSimpleComponent implements OnInit {
 
   @ViewChild('inputNewParticipante') inputNewParticipante!: ElementRef; 
   @ViewChild('inputNumPremios') inputNumPremios!: ElementRef;
+  @ViewChild('inputTitleSorteo') inputTitleSorteo!: ElementRef;
 
   constructor(private sorteosService : SorteosService) {}
 
   ngOnInit(): void {}
 
+  title : string = 'Sorteo simple';
+  descripcion : string = 'Crea un sorteo índicando únicamente los participantes y el número de premios.'
   participantes: string[] = [];
   newParticipante: string = '';
-  numPremios!: number   ;
+  numPremios!: number  ;
   hayError : boolean = false;
   mensajeError : string = '';
   ganadores : string[] = [];
   showDivResultados : boolean = false;
   hayResultados : boolean = false;
+
   mostrarCarga : boolean = false;
   tiempoCarga : number = 5;
   fechaSorteo : Date = new Date();
@@ -37,7 +41,29 @@ export class SorteoSimpleComponent implements OnInit {
   stateSaveButtons : boolean = false;
   stateMainButtons : boolean = true;
   mostrarTablaSorteosLocales : boolean = false;
+  editInfoSorteo : boolean = false;
 
+
+  showEditInfoSorteo(){
+    this.editInfoSorteo = true;
+  }
+
+  saveTitleSorteo(){
+
+    console.log(this.title);
+
+
+    if (this.title.trim().length === 0){
+      this.title = 'Sorteo simple'
+    }
+
+    
+
+    this.editInfoSorteo = false;
+    
+   
+    
+  }
   showSaveButtons(){
 
     this.stateMainButtons = false;
