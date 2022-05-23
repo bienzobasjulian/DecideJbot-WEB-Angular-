@@ -310,7 +310,9 @@ export class SorteoSimpleComponent implements OnInit {
   }
 
   deleteAllLocales(){
-      alert("TO DO: deleteAllLocales()");
+      localStorage.removeItem('sorteos');
+      this.sorteosLocales = [];
+
   }
 
   
