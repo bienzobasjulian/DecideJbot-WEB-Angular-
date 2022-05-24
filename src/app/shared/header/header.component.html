@@ -18,8 +18,8 @@
                 <li class="subitem"><a href="">Próximamente...</a></li>
             </ul>
         </li>
-        <li class="item button"><a href="">Iniciar sesión</a></li>
-        <li class="item button secondary"><a href="">Registrarse</a></li>
+        <li class="item button"><a routerLink="auth/login">Iniciar sesión</a></li>
+        <li class="item button secondary"><a routerLink="auth/register">Registrarse</a></li>
         <li class="toggle" *ngIf="!menuActivado" (click)="toggleMenu()"><a href="#"><i  class="fa fa-bars"></i></a></li>
         <li class="toggle" *ngIf="menuActivado" (click)="toggleMenu()"><a href="#"><i  class="fa fa-times"></i></a></li>
     </ul>
