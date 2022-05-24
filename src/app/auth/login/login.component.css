@@ -10,7 +10,8 @@ h2 {
 
 a {
 	text-decoration: none;
-	color: #666;
+	color: #4caf50;
+	font-weight: bold;
 }
 
 
@@ -75,6 +76,14 @@ p.small {
 	background-color: #4caf50;
 	cursor:pointer;
 	outline: none;
+}
+
+.login-box .btnLoginWithGoogle{
+	background-color: whitesmoke;
+	margin-top: 12px;
+	border: #4caf50 1px solid;
+	border-radius: 12px;
+	color: #4caf50;
 }
 
 .login-box button:hover {

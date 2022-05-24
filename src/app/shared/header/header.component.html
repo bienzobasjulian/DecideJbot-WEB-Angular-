@@ -15,11 +15,16 @@
             <a tabindex="0">Decisiones </a>
             <ul class="submenu">
                 <li class="subitem" ><a routerLink="decisiones/Musica" routerLinkActive="selected">Música</a></li>
-                <li class="subitem"><a href="">Próximamente...</a></li>
+                <li class="subitem" (click)="printUsuarioLog()"><a href="#">Próximamente...</a></li>
             </ul>
         </li>
-        <li class="item button"><a routerLink="auth/login">Iniciar sesión</a></li>
-        <li class="item button secondary"><a routerLink="auth/register">Registrarse</a></li>
+        <li class="item button" *ngIf="usuarioLogueado !== undefined "><a routerLink="auth/login">Iniciar sesión</a></li>
+        <li class="item button secondary" *ngIf="usuarioLogueado !== undefined "><a routerLink="auth/register">Registrarse</a></li>
+        <li class="item profileItem" *ngIf="usuarioLogueado | async as user" (click)="printUsuarioLog()">
+            <img *ngIf="user.photoURL" [src]="user.photoURL" width="30" height="30">
+            {{user.email}}
+            <button class="btnLogOut" (click)="logOut()">Cerrar sesión</button>
+        </li>
         <li class="toggle" *ngIf="!menuActivado" (click)="toggleMenu()"><a href="#"><i  class="fa fa-bars"></i></a></li>
         <li class="toggle" *ngIf="menuActivado" (click)="toggleMenu()"><a href="#"><i  class="fa fa-times"></i></a></li>
     </ul>
