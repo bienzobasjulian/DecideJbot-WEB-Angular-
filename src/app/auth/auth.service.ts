@@ -28,14 +28,12 @@ export class AuthService {
       
   }
 
-  async loginWithGoogle(email: string, password: string) {
-    try {
+  loginWithGoogle(email: string, password: string) {
+   
 
-      return await this.angularFireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+      return  this.angularFireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
 
-    } catch (error) {
-      return null;
-    }
+   
   }
 
   getUserLogged() {

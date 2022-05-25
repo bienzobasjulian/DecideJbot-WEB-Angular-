@@ -60,9 +60,22 @@ export class LoginComponent implements OnInit {
   
   }
 
-  loginWithGoogle(){
+  async loginWithGoogle(){
     const {email, password} = this.usuario;
-      this.authService.loginWithGoogle(email, password);
+     const response = await this.authService.loginWithGoogle(email, password)
+     .catch(error => {
+      alert("Usuario o contraseña inválidos");
+    });
+
+    if (response){
+      const user = this.authService.getUserLogged();
+
+      if (user){
+        this.router.navigate(['/']);
+      }
+    }
+
+
   }
 
   
