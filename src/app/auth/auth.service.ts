@@ -16,28 +16,16 @@ export class AuthService {
 
   constructor(private angularFireAuth: AngularFireAuth) { }
 
-  async register(email: string, password: string) {
-    try {
+   register(email: string, password: string) {
+  
+      return  this.angularFireAuth.createUserWithEmailAndPassword(email, password);
 
-      return await this.angularFireAuth.createUserWithEmailAndPassword(email, password);
-
-    } catch (error) {
-      return null;
-    }
   }
 
-  async login(email: string, password: string)  {
-    try {
-      const { user } = await this.angularFireAuth.signInWithEmailAndPassword(
-        email,
-        password
-      );
+  login(email: string, password: string)  {
+    return this.angularFireAuth.signInWithEmailAndPassword(email,password);
      
-      return user;
-    } catch (error) {
-      console.log(error);
-      return null ;
-    }
+      
   }
 
   async loginWithGoogle(email: string, password: string) {

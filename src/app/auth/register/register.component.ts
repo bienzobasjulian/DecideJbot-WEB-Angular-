@@ -31,12 +31,16 @@ export class RegisterComponent implements OnInit {
     password: ''
   }
 
-  register(){
+  async register(){
     const {email, password} = this.usuario;
 
-    this.authService.register(email, password).then(res => {
+   const response = await this.authService.register(email, password).catch(error => {
+        alert("Error al registrar");
+    })
+
+    if (response){
       alert("Registrado correctamente");
-    });
+    }
   }
 
 }

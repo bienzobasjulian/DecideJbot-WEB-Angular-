@@ -41,23 +41,23 @@ export class LoginComponent implements OnInit {
 
 
 
-  login(){
+  async login(){
 
     const {email, password} = this.usuario;
 
-    this.authService.login(email, password);
+    const response = await this.authService.login(email, password)
+    .catch(error => {
+      alert("Usuario o contraseña inválidos");
+    });
 
-    const user = this.authService.getUserLogged();
+    if (response){
+      const user = this.authService.getUserLogged();
 
-    if (user){
-      this.router.navigate(['/']);
+      if (user){
+        this.router.navigate(['/']);
+      }
     }
-    
-
-    
-
-    
-
+  
   }
 
   loginWithGoogle(){
