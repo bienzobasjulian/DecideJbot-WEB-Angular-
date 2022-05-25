@@ -76,6 +76,7 @@ p.small {
 	background-color: #4caf50;
 	cursor:pointer;
 	outline: none;
+	margin: 12px;
 }
 
 .login-box .btnLoginWithGoogle{

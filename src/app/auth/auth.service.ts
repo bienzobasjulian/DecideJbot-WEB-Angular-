@@ -8,6 +8,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 })
 export class AuthService {
 
+ 
+
   constructor(private angularFireAuth: AngularFireAuth) { }
 
   async register(email: string, password: string) {
@@ -41,8 +43,11 @@ export class AuthService {
   }
 
   getUserLogged() {
+   
     return this.angularFireAuth.authState;
   }
+
+  
 
   logOut(){
     this.angularFireAuth.signOut();

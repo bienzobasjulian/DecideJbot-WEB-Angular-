@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -8,15 +9,25 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService : AuthService) { }
+  constructor(private authService : AuthService,
+    private router: Router) { }
+
+
+  usuarioLogueado = this.authService.getUserLogged();
+
 
   ngOnInit(): void {
+     
   }
 
   usuario = {
     email: '',
     password: ''
   }
+
+  
+
+
 
   login(){
 

@@ -27,7 +27,8 @@
 
         <li class="item profileItem" *ngIf="usuarioLogueado | async as user; else noLogueado" (click)="printUsuarioLog()">
             <img *ngIf="user.photoURL" [src]="user.photoURL" width="30" height="30">
-            {{user.email}}
+            <span class="userName">{{user.displayName}}</span>
+           
             <button class="btnLogOut" (click)="logOut()">Cerrar sesión</button>
         </li>
         <li class="toggle" *ngIf="!menuActivado" (click)="toggleMenu()"><a href="#"><i  class="fa fa-bars"></i></a></li>

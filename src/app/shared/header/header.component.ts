@@ -21,9 +21,9 @@ export class HeaderComponent implements OnInit {
   
   
   
-  
   printUsuarioLog(){
     
+
     this.authService.getUserLogged().subscribe(res => {
       console.log(res?.email);
     
