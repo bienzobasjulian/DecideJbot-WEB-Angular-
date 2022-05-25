@@ -8,9 +8,17 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  public isLogged = false;
+
   constructor(private eRef: ElementRef, private authService : AuthService) { }
 
-  ngOnInit(): void {
+ async ngOnInit() {
+
+    const user = await this.authService.getCurrentUser();
+    if (user){
+      // console.log('User -> ', user);
+      this.isLogged = true;
+    }
   }
 
   menuActivado : boolean = false;

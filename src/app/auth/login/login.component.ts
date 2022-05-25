@@ -14,9 +14,21 @@ export class LoginComponent implements OnInit {
 
 
   usuarioLogueado = this.authService.getUserLogged();
+  
+  public isLogged = false;
 
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+
+    const user = await this.authService.getCurrentUser();
+    if (user){
+      // console.log('User -> ', user);
+      this.isLogged = true;
+    }
+
+    if (this.isLogged){
+      this.router.navigate(['/']);
+    }
      
   }
 
@@ -33,9 +45,16 @@ export class LoginComponent implements OnInit {
 
     const {email, password} = this.usuario;
 
-    this.authService.login(email, password).then(res => {
-      alert("Sesión  iniciada");
-    });
+    this.authService.login(email, password);
+
+    const user = this.authService.getUserLogged();
+
+    if (user){
+      this.router.navigate(['/']);
+    }
+    
+
+    
 
     
 

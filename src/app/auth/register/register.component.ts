@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -8,9 +9,21 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private authService : AuthService) { }
+  public isLogged = false;
+  
+  constructor(private authService : AuthService,
+    private router : Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    const user = await this.authService.getCurrentUser();
+    if (user){
+      // console.log('User -> ', user);
+      this.isLogged = true;
+    }
+
+    if (this.isLogged){
+      this.router.navigate(['/']);
+    }
   }
 
   usuario = {

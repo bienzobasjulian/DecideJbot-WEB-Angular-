@@ -2,11 +2,15 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { AngularFireModule } from '@angular/fire/compat';
+import { User } from '@firebase/auth';
+import { first } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  public user !: User;
 
  
 
@@ -22,13 +26,17 @@ export class AuthService {
     }
   }
 
-  async login(email: string, password: string) {
+  async login(email: string, password: string)  {
     try {
-
-      return await this.angularFireAuth.signInWithEmailAndPassword(email, password);
-
+      const { user } = await this.angularFireAuth.signInWithEmailAndPassword(
+        email,
+        password
+      );
+     
+      return user;
     } catch (error) {
-      return null;
+      console.log(error);
+      return null ;
     }
   }
 
@@ -45,6 +53,10 @@ export class AuthService {
   getUserLogged() {
    
     return this.angularFireAuth.authState;
+  }
+
+  getCurrentUser() {
+    return this.angularFireAuth.authState.pipe(first()).toPromise();
   }
 
   
