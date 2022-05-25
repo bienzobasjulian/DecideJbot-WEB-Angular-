@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-
   firebaseConfig : {
     apiKey: "AIzaSyDx-ylNAgGD5kTr5gqms_CvTYUTOdcuiRI",
     authDomain: "decidejbot.firebaseapp.com",
