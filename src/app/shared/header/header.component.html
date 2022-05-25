@@ -18,9 +18,14 @@
                 <li class="subitem" (click)="printUsuarioLog()"><a href="#">Próximamente...</a></li>
             </ul>
         </li>
-        <li class="item button" *ngIf="usuarioLogueado !== undefined "><a routerLink="auth/login">Iniciar sesión</a></li>
-        <li class="item button secondary" *ngIf="usuarioLogueado !== undefined "><a routerLink="auth/register">Registrarse</a></li>
-        <li class="item profileItem" *ngIf="usuarioLogueado | async as user" (click)="printUsuarioLog()">
+
+        <ng-template #noLogueado>
+            <li class="item button"  ><a routerLink="auth/login">Iniciar sesión</a></li>
+            <li class="item button secondary" ><a routerLink="auth/register">Registrarse</a></li>
+        </ng-template>
+
+
+        <li class="item profileItem" *ngIf="usuarioLogueado | async as user; else noLogueado" (click)="printUsuarioLog()">
             <img *ngIf="user.photoURL" [src]="user.photoURL" width="30" height="30">
             {{user.email}}
             <button class="btnLogOut" (click)="logOut()">Cerrar sesión</button>
