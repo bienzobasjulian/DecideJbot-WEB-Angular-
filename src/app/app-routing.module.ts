@@ -6,6 +6,7 @@ import { MusicaComponent } from './decisiones/musica/musica.component';
 import { IndexComponent } from './home/index/index.component';
 import { NumeroAleatorioComponent } from './sorteos/numero-aleatorio/numero-aleatorio.component';
 import { SorteoSimpleComponent } from './sorteos/sorteo-simple/sorteo-simple.component';
+import { SorteoAvanzadoComponent } from './sorteos/sorteo-avanzado/sorteo-avanzado.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
   {
     path: 'sorteos/SorteoSimple',
     component: SorteoSimpleComponent,
+    
+  },
+  {
+    path: 'sorteos/SorteoAvanzado',
+    component: SorteoAvanzadoComponent,
     
   },
   {

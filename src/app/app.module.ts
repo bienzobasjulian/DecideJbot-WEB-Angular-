@@ -8,6 +8,8 @@ import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { SorteosModule } from './sorteos/sorteos.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { SorteosModule } from './sorteos/sorteos.module';
     SorteosModule,
     AppRoutingModule,
     AuthModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

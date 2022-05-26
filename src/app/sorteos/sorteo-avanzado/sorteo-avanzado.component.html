@@ -1,0 +1,163 @@
+
+<div class="fullContainer">
+  <div class="contenedorContenido">
+    <div class="row">
+      <div class="column columnaSorteos">
+        <div class="divIntroSorteo">
+            <span class="titleSorteoSimple">Sorteo avanzado</span>
+            <br>
+            <span class="descripcionSorteoSimple">Programa una fecha para publicar los resultados, índica premios, comparte el sorteo y sus resultados... ¡Y mucho más!</span>
+        </div>
+
+        <div class="divSorteoSimple">
+           
+            <mat-horizontal-stepper labelPosition="bottom">
+                <mat-step label="Participantes" [stepControl]="participantesFormGroup">
+                    <form [formGroup]="participantesFormGroup">
+                            <mat-form-field>
+                                <input matInput placeholder="Título/Descripción" formControlName="titulo" required>
+                            </mat-form-field>
+                            
+
+                            <mat-form-field class="example-chip-list" appearance="fill">
+                                <mat-label>Participantes</mat-label>
+                                <mat-chip-list #chipList aria-label="Fruit selection">
+                                  <mat-chip *ngFor="let participante of objetosParticipantes" (removed)="remove(participante)">
+                                    {{participante.name}}
+                                    <button matChipRemove>
+                                      <mat-icon>cancel</mat-icon>
+                                    </button>
+                                  </mat-chip>
+                                  <input placeholder="Agregar participante"
+                                         [matChipInputFor]="chipList"
+                                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                         [matChipInputAddOnBlur]="addOnBlur"
+                                         (matChipInputTokenEnd)="add($event)">
+                                </mat-chip-list>
+                              </mat-form-field>
+                        <div ><button matStepperNext>Premios</button></div>
+                       
+                    </form>
+                
+                </mat-step>
+                <mat-step  label="Premios" [stepControl]="premiosFormGroup">
+                    <div>
+                        <form [formGroup]="participantesFormGroup">
+                            <div>
+                                <button matStepperPrevious>Anterior</button>
+                                <button matStepperNext>Siguiente</button>
+                            </div>
+                        </form>
+                       
+                    </div>
+                </mat-step>
+                <mat-step label="Propiedades">
+                    <div>
+                        <button matStepperPrevious>Anterior</button>
+                        <button matStepperNext>Siguiente</button>
+                    </div>
+                </mat-step>
+                <mat-step label="¡Sortear!">
+                    <div>
+                        <button matStepperPrevious>Anterior</button>
+                    </div>
+                </mat-step>
+            </mat-horizontal-stepper>
+            
+        </div>
+      </div>
+       
+      <div class="column columnaOtrosSorteos">
+        <div class="box">
+          <span class="descripcionSorteo">
+            Si deseas realizar un sorteo fácil y rápido,
+            realiza un <a href="#"> sorteo simple. </a>
+          </span>
+        </div>
+        <hr
+          style="
+            height: 2px;
+            background-color: #4caf50;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        />
+        <div class="box">
+          <span class="descripcionSorteo">
+            Si deseas obtener un único ganador prueba a utilizar
+            <a href="#"> la ruleta. </a>
+          </span>
+        </div>
+        <hr
+          style="
+            height: 2px;
+            background-color: #4caf50;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        />
+        <div class="box">
+          <span class="descripcionSorteo">
+            Si deseas sortear equipos o grupos, utiliza el
+            <a href="#"> generador de grupos. </a>
+          </span>
+        </div>
+        <hr
+          style="
+            height: 2px;
+            background-color: #4caf50;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        />
+        <div class="box">
+          <span class="descripcionSorteo">
+            Prueba a <a href="#"> asociar elementos </a> de dos listas.
+          </span>
+        </div>
+        <hr
+          style="
+            height: 2px;
+            background-color: #4caf50;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        />
+        <div class="box">
+          <span class="descripcionSorteo">
+            Prueba a
+            <a href="#"> obtener ganador del sorteo de una publicación </a>
+          </span>
+        </div>
+        <hr
+          style="
+            height: 2px;
+            background-color: #4caf50;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        />
+        <div class="box">
+          <span class="descripcionSorteo">
+            Participa en <a href="#"> sorteos exclusivos </a> de DecideJbot
+          </span>
+        </div>
+        <hr
+          style="
+            height: 2px;
+            background-color: #4caf50;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        />
+        <div class="box">
+          <span class="descripcionSorteo">
+            Prueba a
+            <a routerLink="/sorteos/NumerosAleatorios">
+              generar números aleatorios
+            </a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
