@@ -40,16 +40,20 @@ export class SorteoAvanzadoComponent implements OnInit {
     return this.participantesFormGroup.get('participantes') as FormArray;
   }
 
+  
+
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   objetosParticipantes : Participante[] = [];
+  participantes : string[] = [];
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
-    // Add our fruit
+   
     if (value) {
       this.objetosParticipantes.push({name: value});
+      this.participantes.push(value);
       
       
       
@@ -64,6 +68,7 @@ export class SorteoAvanzadoComponent implements OnInit {
 
     if (index >= 0) {
       this.objetosParticipantes.splice(index, 1);
+      this.participantes.splice(index,1);
     }
   }
 
