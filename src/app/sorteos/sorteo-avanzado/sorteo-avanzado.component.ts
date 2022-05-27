@@ -20,11 +20,17 @@ export interface Participante {
   ]
 })
 export class SorteoAvanzadoComponent implements OnInit {
+
+  participantes : string[] = [];
   
   participantesFormGroup : FormGroup =  this._formBuilder.group({
     titulo: ['Sorteo Avanzado', [Validators.required]],
-    participantes: this._formBuilder.array([], Validators.required)
+    'participantes':[ this.participantes]
   });
+
+  createElement(){
+    return this._formBuilder.control('', Validators.required);
+  }
 
   premiosFormGroup : FormGroup = this._formBuilder.group({
     numeroPremios : [0, [Validators.required]],
@@ -45,7 +51,7 @@ export class SorteoAvanzadoComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   objetosParticipantes : Participante[] = [];
-  participantes : string[] = [];
+  
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
