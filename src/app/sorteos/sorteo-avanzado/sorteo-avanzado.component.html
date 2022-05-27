@@ -11,10 +11,11 @@
 
         <div class="divSorteoSimple">
            
-            <mat-horizontal-stepper labelPosition="bottom">
+            <mat-horizontal-stepper linear labelPosition="bottom">
                 <mat-step label="Participantes" [stepControl]="participantesFormGroup">
-                    <form [formGroup]="participantesFormGroup">
-                            <mat-form-field>
+                    <form autocomplete="off" [formGroup]="participantesFormGroup">
+                            <mat-form-field appearance="outline">
+                              <mat-label>Título/Descripción</mat-label>
                                 <input matInput placeholder="Título/Descripción" formControlName="titulo" required>
                             </mat-form-field>
                             
@@ -35,7 +36,7 @@
                                          (matChipInputTokenEnd)="add($event)">
                                 </mat-chip-list>
                               </mat-form-field>
-                        <div ><button matStepperNext>Premios</button></div>
+                        <div ><button matStepperNext>Premios <i class="fa fa-chevron-right"></i></button></div>
                        
                     </form>
                 

@@ -4,6 +4,7 @@
     <div class="contenedorContenido">
         <div class="row">
             <div class="column columnaSorteos">
+                
                 <div class="divIntroSorteo" *ngIf="!editInfoSorteo">
                     <span class="titleSorteoSimple" (dblclick)="showEditInfoSorteo()" > {{title}} </span>
                     <button class="btnEditarTitle" (click)="showEditInfoSorteo()"><i class="fa fa-pencil"></i></button>
@@ -12,7 +13,7 @@
                  </div>
 
                  <div class="editInfoSorteo" *ngIf="editInfoSorteo">
-                     <input type="text" class="titleSorteoSimple" 
+                     <input type="text" class="titleSorteoSimple"  autocomplete="off"
                      #inputTitleSorteo [(ngModel)]="title" (keyup.enter)="saveTitleSorteo()"> 
                      <button (click)=" saveTitleSorteo()" class="btnSaveTitleSorteo"><i class="fa fa-floppy-o"></i></button>
                      <br>
@@ -26,7 +27,7 @@
        <div class="content">
    <p class="infoPulsaIntro">Introduce un  participante y pulsa intro.</p>
    <div class="divInput">
-    <input #inputNewParticipante type="text" autocomplete="false" spellcheck="false"  
+    <input #inputNewParticipante type="text" autocomplete="off" spellcheck="false"  
 placeholder="Añade participante" 
 id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addParticipante()">
 
@@ -43,7 +44,7 @@ id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addPartici
 
    
     <input #inputNewParticipante type="text" autocomplete="false" spellcheck="false"  
-    placeholder="Añade participante" 
+    placeholder="Añade participante" autocomplete="off"
     id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addParticipante()">
 </ul>
 
