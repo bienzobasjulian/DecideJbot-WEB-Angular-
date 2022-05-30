@@ -299,8 +299,13 @@ export class SorteoSimpleComponent implements OnInit {
       let sorteo : Sorteo = {
 
           titulo: this.title,
-          participantes: this.participantes
+          participantes: this.participantes,
+          usuario : user
       }
+
+      console.log("Llega a saveSorteoExternamente en el ts");
+
+      this.sorteosService.saveSorteoExterno(sorteo);
 
 
      
