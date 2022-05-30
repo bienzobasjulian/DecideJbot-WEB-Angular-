@@ -6,6 +6,7 @@ import { Sorteo } from '../interfaces/sorteo.interface';
 import { SorteosService } from '../sorteos.service';
 import { Resultado } from '../interfaces/resultado.interface';
 import html2canvas from 'html2canvas';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-sorteo-simple',
@@ -18,7 +19,8 @@ export class SorteoSimpleComponent implements OnInit {
   @ViewChild('inputNumPremios') inputNumPremios!: ElementRef;
   @ViewChild('inputTitleSorteo') inputTitleSorteo!: ElementRef;
 
-  constructor(private sorteosService : SorteosService) {}
+  constructor(private sorteosService : SorteosService,
+    private authService : AuthService) {}
 
   ngOnInit(): void {}
 
@@ -285,6 +287,29 @@ export class SorteoSimpleComponent implements OnInit {
       localStorage.setItem('sorteos', JSON.stringify(sorteos) );
       alert("Sorteo guardado localmemte");
     }
+
+  }
+
+   saveSorteoExternamente(){
+    //Comprobar si hay sesión iniciada
+    let user = this.authService.getUser();
+
+    if (user){
+
+      let sorteo : Sorteo = {
+
+          titulo: this.title,
+          participantes: this.participantes
+      }
+
+
+     
+    }
+    else{
+      alert("Necesitas iniciar sesión para hacer esto");
+    }
+    
+    
 
   }
 

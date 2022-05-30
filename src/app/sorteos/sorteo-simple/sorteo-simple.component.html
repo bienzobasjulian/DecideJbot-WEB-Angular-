@@ -81,8 +81,8 @@ id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addPartici
                 <button mat-menu-item>
                     <i class="fa fa-arrows-v"></i> Almacenamiento mixto
                 </button>
-                <button mat-menu-item>
-                    <i class="fas fa-database"></i> Almacenamiento externo
+                <button mat-menu-item (click)="saveSorteoExternamente()">
+                    <i class="fas fa-database" ></i> Almacenamiento externo
                 </button>
             </mat-menu>
         </button>

@@ -4,6 +4,7 @@ import firebase from 'firebase/compat/app';
 import { AngularFireModule } from '@angular/fire/compat';
 import { User } from '@firebase/auth';
 import { first } from 'rxjs';
+import { getAuth } from "firebase/auth";
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,13 @@ export class AuthService {
 
   getCurrentUser() {
     return this.angularFireAuth.authState.pipe(first()).toPromise();
+  }
+
+  getUser(){
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  return user;
   }
 
   

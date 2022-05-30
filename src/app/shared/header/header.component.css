@@ -234,4 +234,8 @@ a {
     
     border-bottom: 0;
   }
+
+  .button.secondary {
+    border-bottom: 0;
+  }
 }
