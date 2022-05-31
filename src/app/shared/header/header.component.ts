@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
     const user = await this.authService.getCurrentUser();
     if (user){
-      // console.log('User -> ', user);
+      
       this.isLogged = true;
     }
   }

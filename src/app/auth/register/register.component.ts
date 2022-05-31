@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const user = await this.authService.getCurrentUser();
     if (user){
-      // console.log('User -> ', user);
+      
       this.isLogged = true;
     }
 

@@ -68,6 +68,12 @@ id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addPartici
                 <button mat-menu-item (click)="getSorteosLocales()">
                     <i class="fas fa-home"></i> Ver participantes locales
                 </button>
+                <button mat-menu-item (click)=" showAllSorteos()">
+                    <i class="fa fa-arrows-v"></i> Ver todos los participantes
+                </button>
+                <button mat-menu-item (click)="getSorteosExternos()">
+                    <i class="fas fa-database"></i> Ver participantes externos
+                </button>
             </mat-menu>
         </button>
 
@@ -130,6 +136,32 @@ id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addPartici
                         <button class="btnAddParticipantes" (click)="addParticipantes(sorteo.participantes)"><i class="fa fa-plus-circle"></i> Añadir</button>
                         <button class="btnReemplazarParticipantes" (click)="showReplaceModal(sorteo.participantes)"><i class="fa fa-refresh"></i> Reemplazar</button>
                         <button class="btnEliminarParticipantes" (click)="showDeleteSorteoLocalModal(i)"><i class="fa fa-trash-o"></i> Eliminar</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="tableListaSorteos" *ngIf="mostrarTablaSorteosExternos && sorteosExternos.length > 0">
+            <table>
+               <tr class="tituloTabla">
+                   <th colspan="2">Sorteos almacenados externamente</th>
+                   <th><button class="btnDeleteAll"><i class="fa fa-trash"></i> Borrar todos</button></th>
+                   <th class="closeTabla" (click)="mostrarTablaSorteosExternos = false">X</th>
+               </tr>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Participantes</th>
+                    <th>Acciones</th>
+                   
+                </tr>
+
+                <tr *ngFor="let sorteo of sorteosExternos; let i = index">
+                    <td>{{sorteo.titulo}}</td>
+                    <td>{{sorteo.participantes}}</td>
+                    <td>
+                        <button class="btnAddParticipantes" (click)="addParticipantes(sorteo.participantes)"><i class="fa fa-plus-circle"></i> Añadir</button>
+                        <button class="btnReemplazarParticipantes" (click)="showReplaceModal(sorteo.participantes)"><i class="fa fa-refresh"></i> Reemplazar</button>
+                        <button class="btnEliminarParticipantes"><i class="fa fa-trash-o"></i> Eliminar</button>
                     </td>
                 </tr>
             </table>

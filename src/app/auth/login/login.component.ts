@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
     const user = await this.authService.getCurrentUser();
     if (user){
-      // console.log('User -> ', user);
+     
       this.isLogged = true;
     }
 
