@@ -176,12 +176,25 @@ id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addPartici
                                         <input type="number" class="form-control" min="1" [(ngModel)]="numPremios" id="input_numPremios" name="input_numPremios" #inputNumPremios>
                                
                                 </fieldset>
+
                                 <br>
+
+                                <div class="divCheckCuentaAtras">
+                                    <label class="lblCheckCuentaAtras" for="checkboxCuentaAtras">Añadir cuenta atrás</label>
+                                    <input type="checkbox"class="form-control-checkbox" id="checkboxCuentaAtras">
+                                    
+                                </div>
+
+                                
+
+                                <p>
                                     <button type="submit" name="sorteo" class="btnSortear" (click)="sortear()">
                                             Sortear 
                                             <div></div>
                                             <i class="fas fa-random"></i>
                                     </button>
+
+                                    
 
          </div>
         
