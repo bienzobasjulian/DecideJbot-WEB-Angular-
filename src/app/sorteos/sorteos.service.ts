@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UUID } from 'angular2-uuid';
 import { Sorteo } from './interfaces/sorteo.interface';
-import { doc, getFirestore, setDoc } from "firebase/firestore";
+import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 import { environment } from '../../environments/environment.prod';
 import { initializeApp } from 'firebase/app';
 
@@ -24,7 +24,7 @@ export class SorteosService {
 
   }
 
-  saveSorteoExterno(sorteo: Sorteo){
+  saveSorteoExterno(sorteo: Sorteo, uidUser : string){
 
     console.log("Llega al servicio");
 
@@ -32,11 +32,16 @@ export class SorteosService {
     
     sorteo.id = id;
 
+    let userRef = doc(this.db, "Usuarios", uidUser );
+
     
+
+   
     setDoc(doc(this.db, "sorteos", id), {
         id: id,
       titulo: sorteo.titulo,
-      participantes: sorteo.participantes
+      participantes: sorteo.participantes,
+      usuario : userRef
 
     });
 

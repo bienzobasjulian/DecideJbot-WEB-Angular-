@@ -7,6 +7,7 @@ import { SorteosService } from '../sorteos.service';
 import { Resultado } from '../interfaces/resultado.interface';
 import html2canvas from 'html2canvas';
 import { AuthService } from '../../auth/auth.service';
+import { getAuth } from 'firebase/auth';
 
 @Component({
   selector: 'app-sorteo-simple',
@@ -296,16 +297,18 @@ export class SorteoSimpleComponent implements OnInit {
 
     if (user){
 
+      let uidUser = user.uid;
+
       let sorteo : Sorteo = {
 
           titulo: this.title,
           participantes: this.participantes,
-          usuario : user
+          
       }
 
       console.log("Llega a saveSorteoExternamente en el ts");
 
-      this.sorteosService.saveSorteoExterno(sorteo);
+      this.sorteosService.saveSorteoExterno(sorteo, uidUser);
 
 
      
