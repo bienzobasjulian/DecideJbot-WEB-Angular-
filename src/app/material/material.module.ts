@@ -5,6 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+
 
 
 
@@ -21,7 +24,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatIconModule,
     MatChipsModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule,
+    MatButtonModule
 
     
     

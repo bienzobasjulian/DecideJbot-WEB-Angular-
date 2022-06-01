@@ -38,6 +38,7 @@ export class SorteoSimpleComponent implements OnInit {
   showDivResultados: boolean = false;
   hayResultados: boolean = false;
   resultado!: Resultado;
+  activarCuentaAtras = true;
   sorteo: Sorteo = {
     titulo: this.title,
     participantes: this.participantes,
@@ -143,8 +144,14 @@ export class SorteoSimpleComponent implements OnInit {
       //Si está todo OK...
       this.showDivResultados = true; //Para mostrar el div.row de los resultados
       this.mostrarCarga = true; //Para mostrar la carga de los resultados
-
-      this.cuentaAtras();
+      
+      if (this.activarCuentaAtras){
+        this.cuentaAtras();
+      }
+      else{
+        this.generarResultados();
+      }
+      
     }
   }
 

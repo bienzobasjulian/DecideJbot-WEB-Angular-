@@ -3,69 +3,61 @@
   <div class="contenedorContenido">
     <div class="row">
       <div class="column columnaSorteos">
+
         <div class="divIntroSorteo">
-            <span class="titleSorteoSimple">Sorteo avanzado</span>
+
+          <div class="divPresentacion" *ngIf="pasoActual === 0">
+            <span class="titlePresentacion">Bienvenido a Sorteo Avanzado con DecideJbot</span>
+            <p>Con la experiencia del Sorteo Avanzado en DecideJbot podrás:
+              <ul> 
+              <li>Programar una fecha de realización <small>(Los resultados no se obtendrán hasta dicha fecha)</small></li>
+              <li>Publicar y compartir los resultados del sorteo <small>(Requiere inicio de sesión)</small></li>
+              <li>Índicar premios del sorteo</li>
+              <li>¡Y mucho más!</li>  
+              </ul>
+  
+              <button mat-raised-button class="btnComenzarSorteoAvanzado" (click)=" comenzarSorteoAvanzado()">Comenzar</button>
+          </div>
+
+          <div class="paso1" *ngIf="pasoActual === 1">
+            <span class="titlePaso">Paso 1: Identifica el sorteo</span>
             <br>
-            <span class="descripcionSorteoSimple">Programa una fecha para publicar los resultados, índica premios, comparte el sorteo y sus resultados... ¡Y mucho más!</span>
-        </div>
+            <span class="descripcion">Añade un título o una descripción al sorteo para que se sepa de que trata y/o se pueda identificar fácil y rápido.</span>
+            <p>
 
-        <div class="divSorteoSimple">
-           
-            <mat-horizontal-stepper  labelPosition="bottom">
-                <mat-step label="Participantes" [stepControl]="participantesFormGroup">
-                    <form autocomplete="off" [formGroup]="participantesFormGroup">
-                            <mat-form-field appearance="outline">
-                              <mat-label>Título/Descripción</mat-label>
-                                <input matInput placeholder="Título/Descripción" formControlName="titulo" required>
-                            </mat-form-field>
-                            
+            <mat-form-field appearance="outline">
+              <mat-label>Título/Descripción</mat-label>
+              <input type="text" matInput class="titlePaso" [(ngModel)]="titulo">
 
-                            <mat-form-field class="example-chip-list" appearance="fill">
-                                <mat-label>Participantes</mat-label>
-                                <mat-chip-list #chipList>
-                                  <mat-chip *ngFor="let participante of objetosParticipantes" (removed)="remove(participante)">
-                                    {{participante.name}}
-                                    <button matChipRemove>
-                                      <mat-icon>cancel</mat-icon>
-                                    </button>
-                                  </mat-chip>
-                                  <input placeholder="Agregar participante"
-                                         [matChipInputFor]="chipList"
-                                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                                         [matChipInputAddOnBlur]="addOnBlur"
-                                         (matChipInputTokenEnd)="add($event)">
-                                </mat-chip-list>
-                              </mat-form-field>
-                        <div *ngIf="participantes.length > 0"><button matStepperNext>Premios <i class="fa fa-chevron-right"></i></button></div>
-                       
-                    </form>
-                
-                </mat-step>
-                <mat-step  label="Premios" [stepControl]="premiosFormGroup">
-                    <div>
-                        <form [formGroup]="participantesFormGroup">
-                            <div>
-                                <button matStepperPrevious>Anterior</button>
-                                <button matStepperNext>Siguiente</button>
-                            </div>
-                        </form>
-                       
-                    </div>
-                </mat-step>
-                <mat-step label="Propiedades">
-                    <div>
-                        <button matStepperPrevious>Anterior</button>
-                        <button matStepperNext>Siguiente</button>
-                    </div>
-                </mat-step>
-                <mat-step label="¡Sortear!">
-                    <div>
-                        <button matStepperPrevious>Anterior</button>
-                    </div>
-                </mat-step>
-            </mat-horizontal-stepper>
+              
+            </mat-form-field>
+
+            <br>
             
+            <button  mat-flat-button color class="btnGoPasoParticipantes" (click)="goStepParticipantes()">
+             Participantes  <i class="fa fa-chevron-right"></i>
+            </button>
+          
+          </div>
+
+          <div class="paso2" *ngIf="pasoActual === 2">
+            <span class="titlePaso">Paso 2: ¿Quién participa?</span>
+            <br>
+            <span class="descripcion">Índica los participantes de "{{titulo}}" </span>
+            <p>
+          </div>
+         
+          
         </div>
+        
+
+        
+           
+           
+           
+            
+            
+        
 
        
 

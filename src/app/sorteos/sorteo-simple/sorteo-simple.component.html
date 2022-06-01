@@ -179,11 +179,9 @@ id="inputParticipantes" [(ngModel)]="newParticipante"  (keyup.enter)="addPartici
 
                                 <br>
 
-                                <div class="divCheckCuentaAtras">
-                                    <label class="lblCheckCuentaAtras" for="checkboxCuentaAtras">Añadir cuenta atrás</label>
-                                    <input type="checkbox"class="form-control-checkbox" id="checkboxCuentaAtras">
-                                    
-                                </div>
+                                <mat-checkbox class="tp-margin" [(ngModel)]="activarCuentaAtras">Activar cuenta atrás <small>(5s)</small></mat-checkbox>
+
+                               
 
                                 
 

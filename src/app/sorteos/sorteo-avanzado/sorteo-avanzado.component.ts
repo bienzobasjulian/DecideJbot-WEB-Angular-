@@ -3,10 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { UUID } from 'angular2-uuid';
 
-export interface Participante {
-  name: string;
-}
+
 
 @Component({
   selector: 'app-sorteo-avanzado',
@@ -21,76 +20,30 @@ export interface Participante {
 })
 export class SorteoAvanzadoComponent implements OnInit {
 
-  participantes : string[] = [];
+  pasoActual : number = 0;
+  uid : string = UUID.UUID();
+  titulo = "Sorteo avanzado #" + this.uid ;
   
-  participantesFormGroup : FormGroup =  this._formBuilder.group({
-    titulo: ['Sorteo Avanzado', [Validators.required]],
-    'participantes':[ this.participantes]
-  });
-
-  createElement(){
-    return this._formBuilder.control('', Validators.required);
-  }
-
-  premiosFormGroup : FormGroup = this._formBuilder.group({
-    numeroPremios : [0, [Validators.required]],
-    premios: this._formBuilder.array([], Validators.required)
-  });
-
-  propiedadesFormGroup : FormGroup = this._formBuilder.group({
-    fechaProgramada :  [, [Validators.required]]
-    
-  });
-
-  get participantesArr(){
-    return this.participantesFormGroup.get('participantes') as FormArray;
-  }
-
-  
-
-  addOnBlur = true;
-  readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  objetosParticipantes : Participante[] = [];
-  
-
-  add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
-
-   
-    if (value) {
-      this.objetosParticipantes.push({name: value});
-      this.participantes.push(value);
-      
-      
-      
-    }
-
-    // Clear the input value
-    event.chipInput!.clear();
-  }
-
-  remove(participante: Participante): void {
-    const index = this.objetosParticipantes.indexOf(participante);
-
-    if (index >= 0) {
-      this.objetosParticipantes.splice(index, 1);
-      this.participantes.splice(index,1);
-    }
-  }
-
-  
-
-
-
-
-  
-
 
   constructor(private _formBuilder : FormBuilder ) { }
 
   ngOnInit(): void {
     
+  }
+
+  comenzarSorteoAvanzado(){
+    this.pasoActual = 1;
    
+  }
+
+  goStepParticipantes(){
+    this.pasoActual = 2;
+    
+    if (this.titulo.length == 0){
+      this.titulo = "Sorteo avanzado #" + this.uid ;
+    }
+
+    console.log(this.titulo);
   }
   
 
