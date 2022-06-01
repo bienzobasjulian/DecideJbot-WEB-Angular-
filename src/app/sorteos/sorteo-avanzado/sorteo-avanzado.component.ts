@@ -29,6 +29,7 @@ export class SorteoAvanzadoComponent implements OnInit {
   titulo = "Sorteo avanzado #" + this.uid ;
   participantes: string[] = [];
   numPremios!: number;
+  fecha: Date = new Date();
 
   newParticipante: string = '';
   

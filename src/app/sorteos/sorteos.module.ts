@@ -7,6 +7,7 @@ import { NumeroAleatorioComponent } from './numero-aleatorio/numero-aleatorio.co
 import { RouterModule } from '@angular/router';
 import { SorteoAvanzadoComponent } from './sorteo-avanzado/sorteo-avanzado.component';
 import { MaterialModule } from '../material/material.module';
+import {CalendarModule} from 'primeng/calendar';
 
 
 
@@ -22,7 +23,8 @@ import { MaterialModule } from '../material/material.module';
     SharedModule,
     RouterModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CalendarModule
   ], exports: [
     SorteoSimpleComponent,
     NumeroAleatorioComponent

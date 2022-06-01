@@ -25,6 +25,7 @@
     "angular2-uuid": "^1.1.1",
     "firebase": "^9.8.1",
     "html2canvas": "^1.4.1",
+    "primeng": "^13.4.1",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.4.14",
     "tslib": "^2.3.0",
