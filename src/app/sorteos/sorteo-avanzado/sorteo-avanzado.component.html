@@ -283,7 +283,9 @@
             >
             <p>
 
-              <p-calendar [(ngModel)]="fecha" dateFormat="dd/mm/yy"></p-calendar>
+              <p-calendar [(ngModel)]="fecha" [showTime]="true" [showSeconds]="true" inputId="time" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
+
+              <!-- <p-calendar [(ngModel)]="fecha" dateFormat="dd/mm/yy"></p-calendar> -->
 
               <p>
              
