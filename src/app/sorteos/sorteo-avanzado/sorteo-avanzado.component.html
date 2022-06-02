@@ -340,7 +340,7 @@
                 mat-flat-button
                 color
                 class="btnNext"
-                (click)="createSorteo()"
+                (click)="goStepResultado()"
               >
                Confirmar y sortear <i class="fa fa-random"></i>
               </button>
@@ -349,11 +349,18 @@
                 mat-flat-button
                 color
                 class="btnNext"
-                (click)="createSorteo()"
+                (click)="goStepResultado()"
                 
               >
                Confirmar y programar el sorteo <i class="fa fa-clock-o"></i>
               </button>
+
+        </div>
+
+        <div class="pasoResultados" *ngIf="pasoActual === 6">
+
+        <input type="text" [(ngModel)]="urlResultado">
+          
 
         </div>
 

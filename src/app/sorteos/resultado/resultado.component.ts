@@ -4,6 +4,7 @@ import { Resultado } from '../interfaces/resultado.interface';
 import { Sorteo } from '../interfaces/sorteo.interface';
 import { SorteosService } from '../sorteos.service';
 
+
 @Component({
   selector: 'app-resultado',
   templateUrl: './resultado.component.html',
@@ -12,6 +13,8 @@ import { SorteosService } from '../sorteos.service';
 export class ResultadoComponent implements OnInit {
 
   resultado !: Resultado;
+  demo : any;
+  hayResultados : boolean = false;
  
 
   constructor(private activatedRoute : ActivatedRoute,
@@ -78,6 +81,27 @@ export class ResultadoComponent implements OnInit {
               }
               else{
                 //alert("Aun no");
+                
+                let countDownDate = fechaProgramada.getTime();
+
+               let x = setInterval(() => {
+                 var now = new Date().getTime();
+                 var distance = countDownDate - now;
+                 var days = Math.floor(distance/(1000*60*60*24));
+                 var hours = Math.floor((distance % (1000*60*60*24))/ (1000*60*60));
+                 var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+                 var seconds = Math.floor((distance % (1000*60)) / 1000);
+                
+                 this.demo = days + "días " + hours + "h " + minutes + "m " + 
+                 seconds + "s";
+
+                 if (distance < 0){
+                   clearInterval(x);
+
+                   
+                 }
+
+               })
               }
 
              

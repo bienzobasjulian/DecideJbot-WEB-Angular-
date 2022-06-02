@@ -35,6 +35,7 @@ export class SorteoAvanzadoComponent implements OnInit {
   participantes: string[] = [];
   numPremios!: number;
   fecha: Date = new Date();
+  urlResultado : string = 'https://bienzobasjulian.github.io/DecideJbot-WEB-Angular-/#/';
 
   generarSinFecha = false;
 
@@ -105,6 +106,13 @@ export class SorteoAvanzadoComponent implements OnInit {
     this.pasoActual = 5;
   }
 
+  goStepResultado(){
+    this.createSorteo();
+    this.pasoActual = 6;
+
+    
+  }
+
   createSorteo(){
     //Comprobar si hay sesión iniciada
     let user = this.authService.getUser();
@@ -141,6 +149,7 @@ export class SorteoAvanzadoComponent implements OnInit {
     }
 
     this.sorteosService.createResultado(resultado, uidUser);
+    this.urlResultado = this.urlResultado + "sorteos/resultado/" + uidResultado;
   
 
 
