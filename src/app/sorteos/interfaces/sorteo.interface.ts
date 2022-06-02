@@ -6,4 +6,6 @@ export interface Sorteo {
     titulo ?: string;
     participantes : string[];
     usuario ?: DocumentReference;
+    fechaProgramada ?: Date | Object | any;
+    numPremios ?: number;
 }

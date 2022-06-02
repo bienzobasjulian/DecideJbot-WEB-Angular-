@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { UUID } from 'angular2-uuid';
 import { Sorteo } from './interfaces/sorteo.interface';
-import { collection, doc, getDoc, getDocs, getFirestore, query, setDoc, where } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, getFirestore, query, setDoc, where, DocumentReference, DocumentData, DocumentSnapshot } from 'firebase/firestore';
 import { environment } from '../../environments/environment.prod';
 import { initializeApp } from 'firebase/app';
+import { Resultado } from './interfaces/resultado.interface';
 
 
 
@@ -12,6 +13,7 @@ import { initializeApp } from 'firebase/app';
   providedIn: 'root'
 })
 export class SorteosService {
+  
 
 
 
@@ -28,9 +30,131 @@ export class SorteosService {
 
   }
 
-  saveSorteoExterno(sorteo: Sorteo, uidUser : string){
+  saveSorteoAvanzado(sorteo: Sorteo, uidUser : string | undefined){
+
+    if (sorteo.id != undefined){
+
+      if (uidUser != undefined){
+        let userRef = doc(this.db, "Usuarios", uidUser );
+  
+       
+        setDoc(doc(this.db, "sorteos", sorteo.id ), {
+          id: sorteo.id,
+        titulo: sorteo.titulo,
+        participantes: sorteo.participantes,
+        numPremios : sorteo.numPremios,
+        fechaProgramada : sorteo.fechaProgramada,
+        usuario : userRef
+  
+      });
+       
+  
+        
+  
+      }
+      else{
+
+        setDoc(doc(this.db, "sorteos", sorteo.id ), {
+          id: sorteo.id,
+        titulo: sorteo.titulo,
+        participantes: sorteo.participantes,
+        numPremios : sorteo.numPremios,
+        fechaProgramada : sorteo.fechaProgramada,
+  
+      });
+
+      }
+    }
 
     
+  }
+
+  createResultado(resultado : Resultado, uidUser : string | undefined){
+    if (uidUser != undefined){
+      let userRef = doc(this.db, "Usuarios", uidUser );
+      
+      if(resultado.sorteo.id != undefined){
+
+        let sorteoRef = doc(this.db, "sorteos", resultado.sorteo.id );
+
+        setDoc(doc(this.db, "resultados", resultado.id), {
+          id: resultado.id,
+          sorteo : sorteoRef,
+          ganadores: resultado.ganadores,
+          usuario : userRef
+      });
+
+      }
+
+      
+    }
+    else{
+
+      if(resultado.sorteo.id != undefined){
+
+        let sorteoRef = doc(this.db, "sorteos", resultado.sorteo.id );
+
+        setDoc(doc(this.db, "resultados", resultado.id), {
+          id: resultado.id,
+          sorteo : sorteoRef,
+          ganadores: resultado.ganadores,
+         
+      });
+
+      }
+
+    }
+  }
+
+  async getResultadoPorId(id : string){
+
+   
+    const resultadoRef = doc(this.db, "resultados", id);
+
+    const resultadoSnap = await getDoc(resultadoRef);
+
+    if(( resultadoSnap).exists()){
+      
+      
+
+     
+      let resultadoObtenido : Resultado = {
+            id: id,
+            sorteo: resultadoSnap.data()['sorteo'],
+            ganadores : resultadoSnap.data()['ganadores']
+      }
+
+      return resultadoObtenido;
+
+    }
+
+    return;
+    
+  }
+
+  async getSorteoOfReference(sorteoRef : any) {
+
+    let sorteoSnap : DocumentSnapshot<DocumentData> =  await getDoc(sorteoRef);
+
+    if (sorteoSnap.exists()){
+      console.log(sorteoSnap.data());
+
+     let sorteo : Sorteo = {
+       titulo : sorteoSnap.data()['titulo'],
+       participantes : sorteoSnap.data()['participantes'],
+       fechaProgramada : sorteoSnap.data()['fechaProgramada'],
+       numPremios :sorteoSnap.data()['numPremios']
+     }
+
+     return sorteo;
+    }
+    
+    return ;
+  }
+
+  
+
+  saveSorteoExterno(sorteo: Sorteo, uidUser : string){
 
     let id = UUID.UUID();
     

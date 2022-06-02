@@ -283,15 +283,81 @@
             >
             <p>
 
-              <p-calendar [(ngModel)]="fecha" [showTime]="true" [showSeconds]="true" inputId="time" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
-
-              <!-- <p-calendar [(ngModel)]="fecha" dateFormat="dd/mm/yy"></p-calendar> -->
-
+              <p-calendar [(ngModel)]="fecha" 
+              [showTime]="true" 
+              [showSeconds]="true"
+              inputId="time" 
+              [showIcon]="true"
+               dateFormat="dd/mm/yy"></p-calendar>
+               <button mat-button class="generarYa" (click)=" goStepConfirmSinFecha()">Generar los resultados ahora</button>
+           
               <p>
+
+                <button
+              mat-flat-button
+              color
+              class="btnBack"
+              (click)="backStep()"
+            >
+            <i class="fa fa-chevron-left"></i> Premios
+            </button>
+              <button
+                mat-flat-button
+                color
+                class="btnNext"
+                (click)=" goStepConfirm()"
+              >
+                Finalizar <i class="fa fa-chevron-right"></i>
+              </button>
              
               
             </p>
           </div>
+
+          <div class="pasoFinal" *ngIf="pasoActual === 5">
+            <span class="titlePaso">{{titulo}}</span>
+            <br>
+            <span><b>{{participantes.length}} Participantes:  </b> {{participantes}} </span>
+            <br>
+            <span><b>Nº de premios: </b>{{numPremios}}</span>
+            <br>
+            <div *ngIf="!generarSinFecha">
+              <b>Fecha programada de resolución del sorteo: </b> {{fecha}}
+            </div>
+        
+            <p>
+        
+              <button
+              mat-flat-button
+              color
+              class="btnBack"
+              (click)="backStep()"
+            >
+            <i class="fa fa-chevron-left"></i> Fecha
+        
+            </button>
+              <button *ngIf="generarSinFecha"
+                mat-flat-button
+                color
+                class="btnNext"
+                (click)="createSorteo()"
+              >
+               Confirmar y sortear <i class="fa fa-random"></i>
+              </button>
+        
+              <button *ngIf="!generarSinFecha"
+                mat-flat-button
+                color
+                class="btnNext"
+                (click)="createSorteo()"
+                
+              >
+               Confirmar y programar el sorteo <i class="fa fa-clock-o"></i>
+              </button>
+
+        </div>
+
+          
         </div>
       </div>
 

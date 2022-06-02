@@ -5,6 +5,11 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { UUID } from 'angular2-uuid';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/auth/auth.service';
+import { SorteosService } from '../sorteos.service';
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
+import { Sorteo } from '../interfaces/sorteo.interface';
+import { Resultado } from '../interfaces/resultado.interface';
 
 
 
@@ -31,10 +36,14 @@ export class SorteoAvanzadoComponent implements OnInit {
   numPremios!: number;
   fecha: Date = new Date();
 
+  generarSinFecha = false;
+
   newParticipante: string = '';
   
 
-  constructor(private _formBuilder : FormBuilder ) { }
+  constructor(private _formBuilder : FormBuilder,
+    private sorteosService: SorteosService,
+    private authService: AuthService ) { }
 
   ngOnInit(): void {
     
@@ -84,6 +93,59 @@ export class SorteoAvanzadoComponent implements OnInit {
 
       this.pasoActual = 4;
     }
+  }
+
+  goStepConfirm(){
+    this.generarSinFecha = false;
+    this.pasoActual = 5;
+  }
+
+  goStepConfirmSinFecha(){
+    this.generarSinFecha = true;
+    this.pasoActual = 5;
+  }
+
+  createSorteo(){
+    //Comprobar si hay sesión iniciada
+    let user = this.authService.getUser();
+
+    let uidUser;
+
+    if (user) {
+       uidUser = user.uid;
+    }
+    else{
+      uidUser = undefined;
+    }
+
+    if (this.generarSinFecha){
+      this.fecha = new Date();
+    }
+
+    let sorteo : Sorteo = {
+      id: this.uid,
+      titulo: this.titulo,
+      participantes: this.participantes,
+      numPremios  : this.numPremios,
+      fechaProgramada : this.fecha,
+    }
+
+    this.sorteosService.saveSorteoAvanzado(sorteo, uidUser)
+
+    let uidResultado = UUID.UUID();
+
+    let resultado : Resultado = {
+      id: uidResultado,
+      sorteo: sorteo,
+      ganadores: []
+    }
+
+    this.sorteosService.createResultado(resultado, uidUser);
+  
+
+
+     
+
   }
 
   showAlert(mensajeError: string) {

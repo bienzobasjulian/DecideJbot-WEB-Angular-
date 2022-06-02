@@ -325,6 +325,16 @@
  
 }
 
+.paso4 ::ng-deep p-calendar {
+  background-color: white;
+}
+
+.generarYa {
+  color: #4caf50;
+}
+
+
+
 
 
 

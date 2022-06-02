@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { SorteoAvanzadoComponent } from './sorteo-avanzado/sorteo-avanzado.component';
 import { MaterialModule } from '../material/material.module';
 import {CalendarModule} from 'primeng/calendar';
+import { ResultadoComponent } from './resultado/resultado.component';
 
 
 
@@ -15,7 +16,8 @@ import {CalendarModule} from 'primeng/calendar';
   declarations: [
     SorteoSimpleComponent,
     NumeroAleatorioComponent,
-    SorteoAvanzadoComponent
+    SorteoAvanzadoComponent,
+    ResultadoComponent
   ],
   imports: [
     CommonModule,

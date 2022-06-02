@@ -7,6 +7,7 @@ import { IndexComponent } from './home/index/index.component';
 import { NumeroAleatorioComponent } from './sorteos/numero-aleatorio/numero-aleatorio.component';
 import { SorteoSimpleComponent } from './sorteos/sorteo-simple/sorteo-simple.component';
 import { SorteoAvanzadoComponent } from './sorteos/sorteo-avanzado/sorteo-avanzado.component';
+import { ResultadoComponent } from './sorteos/resultado/resultado.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,11 @@ const routes: Routes = [
   {
     path: 'sorteos/SorteoAvanzado',
     component: SorteoAvanzadoComponent,
+    
+  },
+  {
+    path: 'sorteos/resultado/:id',
+    component: ResultadoComponent,
     
   },
   {
