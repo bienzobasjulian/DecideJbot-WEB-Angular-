@@ -130,6 +130,7 @@ export class ResultadoComponent implements OnInit {
 
                       if (distance < 0) {
                         clearInterval(x);
+                        this.generarResultados(sorteo);
                       }
                     });
                   }
