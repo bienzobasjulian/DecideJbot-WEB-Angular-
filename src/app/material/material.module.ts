@@ -7,6 +7,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -26,7 +29,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatMenuModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatProgressBarModule
 
     
     

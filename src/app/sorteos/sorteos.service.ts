@@ -106,6 +106,40 @@ export class SorteosService {
     }
   }
 
+  updateResultado(resultado : Resultado, uidUser : string | undefined){
+
+   
+
+    if(uidUser != undefined){
+     
+      let userRef = doc(this.db, "Usuarios", uidUser );
+
+      console.log(resultado.sorteo.id);
+
+      if(resultado.sorteo.id != undefined){
+       
+        let sorteoRef = doc(this.db, "sorteos", resultado.sorteo.id );
+
+        setDoc(doc(this.db, "resultados", resultado.id), {
+          id: resultado.id,
+          sorteo : sorteoRef,
+          ganadores: resultado.ganadores,
+          usuario : userRef,
+          fecha: resultado.fecha
+      });
+
+      
+
+      }
+
+    }
+
+
+
+    
+
+  }
+
   async getResultadoPorId(id : string){
 
    
@@ -121,7 +155,8 @@ export class SorteosService {
       let resultadoObtenido : Resultado = {
             id: id,
             sorteo: resultadoSnap.data()['sorteo'],
-            ganadores : resultadoSnap.data()['ganadores']
+            ganadores : resultadoSnap.data()['ganadores'],
+            fecha : resultadoSnap.data()['fecha']
       }
 
       return resultadoObtenido;
@@ -140,6 +175,7 @@ export class SorteosService {
       console.log(sorteoSnap.data());
 
      let sorteo : Sorteo = {
+       id: sorteoSnap.data()['id'],
        titulo : sorteoSnap.data()['titulo'],
        participantes : sorteoSnap.data()['participantes'],
        fechaProgramada : sorteoSnap.data()['fechaProgramada'],
