@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 
@@ -32,7 +33,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatBadgeModule
 
     
     
