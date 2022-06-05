@@ -358,8 +358,17 @@
         </div>
 
         <div class="pasoResultados" *ngIf="pasoActual === 6">
+          <span class="titlePaso">{{titulo}}</span>
+          <p>
 
-        <input type="text" [(ngModel)]="urlResultado">
+        <span>Accede o comparte  los resultados con el siguiente enlace: </span>
+        <br>
+        <input type="text" [(ngModel)]="urlResultado" #inputUrlResultado class="titlePaso">
+        <button class="btnCopyUrl" (click)="copyUrl()"><i class="fa fa-clipboard"></i></button>
+        
+        
+
+
           
 
         </div>

@@ -10,6 +10,7 @@ import { SorteosService } from '../sorteos.service';
 import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 import { Sorteo } from '../interfaces/sorteo.interface';
 import { Resultado } from '../interfaces/resultado.interface';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 
 
@@ -28,6 +29,7 @@ export class SorteoAvanzadoComponent implements OnInit {
 
   @ViewChild('inputNewParticipante') inputNewParticipante!: ElementRef;
   @ViewChild('inputNumPremios') inputNumPremios!: ElementRef;
+  @ViewChild('inputUrlResultado') inputUrlResultado!: ElementRef;
 
   pasoActual : number = 0;
   uid : string = UUID.UUID();
@@ -44,7 +46,8 @@ export class SorteoAvanzadoComponent implements OnInit {
 
   constructor(private _formBuilder : FormBuilder,
     private sorteosService: SorteosService,
-    private authService: AuthService ) { }
+    private authService: AuthService,
+    private clipboard: Clipboard ) { }
 
   ngOnInit(): void {
     
@@ -204,6 +207,12 @@ export class SorteoAvanzadoComponent implements OnInit {
 
   removeAllParticipantes() {
     this.participantes = [];
+  }
+
+  copyUrl(){
+    this.inputUrlResultado.nativeElement.select();
+    this.clipboard.copy(this.urlResultado);
+    
   }
   
 
