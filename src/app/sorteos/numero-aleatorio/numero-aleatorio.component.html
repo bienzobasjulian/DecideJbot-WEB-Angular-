@@ -109,7 +109,8 @@
             <div class="contenedorResultados" *ngIf="numeros.length > 0">
                 <span class="titleResultados">Números generados</span>
                 <div class="containerNumeros">
-                    <div class="numberBall" *ngFor="let numero of numeros">
+                    <div [ngClass]="valorMaximo < 1000 ? 'numberBall' : 'numbers'" *ngFor="let numero of numeros">
+                        <!-- <div class="numberBall" *ngFor="let numero of numeros"></div> -->
                         <div>
                             <span >{{numero}}</span>
                         </div>

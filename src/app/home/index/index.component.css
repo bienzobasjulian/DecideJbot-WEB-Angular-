@@ -166,7 +166,7 @@
 
 @media all and (min-width: 480px) {
     .card {
-        width: 35%;
+        width: 25%;
     }
 
     .fullCard {

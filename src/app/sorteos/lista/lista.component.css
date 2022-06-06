@@ -11,7 +11,7 @@
 }
 
 .card {
-    width: 300x;
+    width: 300px;
     margin: 12px;
     cursor: pointer;
 }
@@ -31,5 +31,13 @@
     font-size: 3.2rem;
     color: #4caf50;
     text-align: center;
+}
+
+.mat-tab-body.mat-tab-body-active{
+    z-index: 0 !important;
+}
+
+.zindex0 *{
+    z-index: 0 !important;
 }
 

@@ -11,6 +11,8 @@ import { SorteosService } from 'src/app/sorteos/sorteos.service';
 export class IndexComponent implements OnInit {
 
   misResultados : Resultado[] = [];
+  
+  usuarioLogueado = this.authService.getUserLogged();
 
   constructor(private sorteosService: SorteosService,
     private authService: AuthService) { }

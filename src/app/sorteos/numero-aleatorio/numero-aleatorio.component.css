@@ -272,6 +272,10 @@ margin: 8px;
 background-color: #4caf50;
 }
 
+.numbers {
+  margin: 8px;
+}
+
 .numberBall div{
     position: relative;
           width: 100%;

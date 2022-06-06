@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UUID } from 'angular2-uuid';
 import { Sorteo } from './interfaces/sorteo.interface';
-import { collection, doc, getDoc, getDocs, getFirestore, query, setDoc, where, DocumentReference, DocumentData, DocumentSnapshot } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, getFirestore, query, setDoc, where, DocumentReference, DocumentData, DocumentSnapshot, orderBy } from 'firebase/firestore';
 import { environment } from '../../environments/environment.prod';
 import { initializeApp } from 'firebase/app';
 import { Resultado } from './interfaces/resultado.interface';

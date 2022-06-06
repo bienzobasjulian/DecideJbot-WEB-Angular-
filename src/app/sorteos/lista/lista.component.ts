@@ -12,6 +12,8 @@ import { SorteosService } from '../sorteos.service';
 export class ListaComponent implements OnInit {
 
   resultados : Resultado[] = [];
+  
+
 
   constructor(private sorteosService: SorteosService,
     private authService: AuthService) { }
@@ -24,6 +26,7 @@ export class ListaComponent implements OnInit {
     //Comprobar si hay sesión iniciada
     
     let user = this.authService.getUser();
+    console.log(user);
     
 
     if (user){
