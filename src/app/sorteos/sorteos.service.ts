@@ -247,4 +247,32 @@ export class SorteosService {
     return this.sorteosExternos;
 
   }
+
+  async getResultados(uidUser : string){
+
+    
+
+    let userRef = doc(this.db, "Usuarios", uidUser );
+
+    const q = query(collection(this.db, "resultados"), where ("usuario", "==", userRef));
+
+    const response = await getDocs(q);
+
+    let resultados : Resultado[] = [];
+
+    response.forEach((doc) => {
+      let resultado : Resultado = {
+        id: doc.data()['id'],
+        sorteo : doc.data()['sorteo'],
+        ganadores : doc.data()['ganadores'],
+        usuario : doc.data()['usuario']
+      }
+
+      resultados.push(resultado);
+    });
+
+    return resultados;
+
+
+  }
 }

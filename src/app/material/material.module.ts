@@ -11,7 +11,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatBadgeModule} from '@angular/material/badge';
-
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -34,7 +34,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatCardModule,
     MatDividerModule,
     MatProgressBarModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTabsModule
 
     
     

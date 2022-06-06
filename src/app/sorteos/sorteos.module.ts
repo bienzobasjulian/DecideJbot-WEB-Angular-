@@ -9,6 +9,7 @@ import { SorteoAvanzadoComponent } from './sorteo-avanzado/sorteo-avanzado.compo
 import { MaterialModule } from '../material/material.module';
 import {CalendarModule} from 'primeng/calendar';
 import { ResultadoComponent } from './resultado/resultado.component';
+import { ListaComponent } from './lista/lista.component';
 
 
 
@@ -17,7 +18,8 @@ import { ResultadoComponent } from './resultado/resultado.component';
     SorteoSimpleComponent,
     NumeroAleatorioComponent,
     SorteoAvanzadoComponent,
-    ResultadoComponent
+    ResultadoComponent,
+    ListaComponent
   ],
   imports: [
     CommonModule,
