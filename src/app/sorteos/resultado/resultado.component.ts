@@ -102,7 +102,7 @@ export class ResultadoComponent implements OnInit {
                       this.hayResultados = true;
                     }
                   } else {
-                    //alert("Aun no");
+                   
 
                     let countDownDate = fechaProgramada.getTime();
 

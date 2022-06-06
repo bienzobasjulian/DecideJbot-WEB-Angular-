@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Resultado } from '../interfaces/resultado.interface';
+import { Sorteo } from '../interfaces/sorteo.interface';
 import { SorteosService } from '../sorteos.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class ListaComponent implements OnInit {
     //Comprobar si hay sesión iniciada
     
     let user = this.authService.getUser();
-    console.log(user);
+    
 
     if (user){
       
@@ -37,6 +38,25 @@ export class ListaComponent implements OnInit {
             ganadores : response[i].ganadores,
             sorteo: response[i].sorteo
           }
+
+          //Obtener el sorteo
+
+          this.sorteosService.getSorteoOfReference(resultado.sorteo)
+          .then((sorteoResponse) => {
+            if (sorteoResponse){
+              
+              let sorteo: Sorteo = {
+                id : sorteoResponse.id,
+                titulo: sorteoResponse.titulo,
+                participantes: sorteoResponse.participantes,
+                fechaProgramada: sorteoResponse.fechaProgramada,
+                numPremios: sorteoResponse.numPremios
+              };
+
+              resultado.sorteo = sorteo;
+
+            }
+          })
 
           this.resultados.push(resultado);
         }

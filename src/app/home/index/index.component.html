@@ -100,7 +100,7 @@
                         <p>¡Participa en sorteos creados para usuarios registrados en la aplicación!</p>
                 </div>
 
-                <div class="fullCard disabledCard">
+                <div class="fullCard" *ngIf="misResultados.length > 0" routerLink="sorteos/lista" >
                    
                         <img src="assets/img/historial.png">
                        
