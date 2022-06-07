@@ -361,12 +361,14 @@
 
 /* PC */
 @media(min-width: 1024px){
-  .columnaSorteos {
-    width: 75%;
-  }
+  
 
   .columnaOtrosSorteos {
     display: block;
+  }
+
+  .fieldParticipantes {
+    width: 50%;
   }
 
   .infoPulsaIntro {

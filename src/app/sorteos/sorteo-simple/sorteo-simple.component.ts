@@ -88,7 +88,16 @@ export class SorteoSimpleComponent implements OnInit {
       this.participantes.push(valorParticipante);
     }
 
-    this.newParticipante = '';
+    this.newParticipante = '  ';
+  }
+
+  backInInput(){
+    
+    let valorParticipante = this.newParticipante;
+
+    if (valorParticipante.length === 0){
+      this.participantes.pop();
+    }
   }
 
   eliminarParticipante(i: number) {

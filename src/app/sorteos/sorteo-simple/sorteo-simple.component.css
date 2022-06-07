@@ -938,9 +938,7 @@ body {
 
 /* PC */
 @media(min-width: 1024px){
-  .columnaSorteos {
-    width: 75%;
-  }
+  
 
   .columnaOtrosSorteos {
     display: block;
@@ -956,6 +954,10 @@ body {
 
   .divInput {
     display: none;
+  }
+
+  .fieldParticipantes{
+    width: 50%;
   }
 
   .containerGanadores {
