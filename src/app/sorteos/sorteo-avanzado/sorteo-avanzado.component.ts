@@ -188,7 +188,7 @@ export class SorteoAvanzadoComponent implements OnInit {
       this.participantes.push(valorParticipante);
     }
 
-    this.newParticipante = '';
+    this.newParticipante = '  ';
   }
 
 
@@ -197,6 +197,15 @@ export class SorteoAvanzadoComponent implements OnInit {
 
     if (this.participantes.length == 0) {
       
+    }
+  }
+
+  backInInput(){
+    
+    let valorParticipante = this.newParticipante;
+
+    if (valorParticipante.length === 0){
+      this.participantes.pop();
     }
   }
 

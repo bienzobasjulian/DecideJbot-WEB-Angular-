@@ -46,6 +46,7 @@
                   matInput
                   class="titlePaso"
                   [(ngModel)]="titulo"
+                  (keyup.enter)="goStepParticipantes()"
                 />
               </mat-form-field>
 
@@ -90,6 +91,7 @@
                       id="inputParticipantes"
                       [(ngModel)]="newParticipante"
                       (keyup.enter)="addParticipante()"
+                      
                     />
 
                     <button
@@ -121,6 +123,7 @@
                       id="inputParticipantes"
                       [(ngModel)]="newParticipante"
                       (keyup.enter)="addParticipante()"
+                      (keyup.backspace)="backInInput()"
                     />
                   </ul>
                 </div>
@@ -130,15 +133,13 @@
                     <span></span> {{ participantes.length }} participantes
                     disponibles
                   </p>
-                  <div class="botonesAccionLista">
+                  <div class="botonesAccionLista" *ngIf="participantes.length > 0">
                     <button mat-icon-button [matMenuTriggerFor]="menu">
                       <i class="fa fa-ellipsis-v"></i>
                     </button>
                     <mat-menu #menu="matMenu">
-                      <button mat-menu-item *ngIf="participantes.length > 0">
-                        <i class="fas fa-copy"></i> Copiar al portapapeles
-                      </button>
-                      <button mat-menu-item [matMenuTriggerFor]="menuImportar">
+
+                      <!-- <button mat-menu-item [matMenuTriggerFor]="menuImportar">
                         <i class="fas fa-upload"></i> Importar participantes
 
                         <mat-menu #menuImportar="matMenu">
@@ -155,9 +156,9 @@
                             externos
                           </button>
                         </mat-menu>
-                      </button>
+                      </button> -->
 
-                      <button
+                      <!-- <button
                         mat-menu-item
                         [matMenuTriggerFor]="menuExportar"
                         *ngIf="participantes.length > 0"
@@ -182,7 +183,7 @@
                             externo
                           </button>
                         </mat-menu>
-                      </button>
+                      </button> -->
 
                       <button
                         mat-menu-item
@@ -280,8 +281,9 @@
               >¿Cuándo se realiza "{{ titulo }}" ? </span
             >
             <p>
-
-              <p-calendar [(ngModel)]="fecha" 
+             
+                <p-calendar [(ngModel)]="fecha" 
+                id="myCalendar"
               [showTime]="true" 
               [showSeconds]="true"
               inputId="time" 

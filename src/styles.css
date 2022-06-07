@@ -62,6 +62,10 @@ html, body {
     padding-top: 2.25rem;
 }
 
+.p-datepicker {
+  background-color: white;
+}
+
 
 
 html, body { height: 100%; }
