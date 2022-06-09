@@ -156,7 +156,8 @@ export class SorteosService {
             id: id,
             sorteo: resultadoSnap.data()['sorteo'],
             ganadores : resultadoSnap.data()['ganadores'],
-            fecha : resultadoSnap.data()['fecha']
+            fecha : resultadoSnap.data()['fecha'],
+            usuario : resultadoSnap.data()['usuario']
       }
 
       return resultadoObtenido;
@@ -172,20 +173,32 @@ export class SorteosService {
     let sorteoSnap : DocumentSnapshot<DocumentData> =  await getDoc(sorteoRef);
 
     if (sorteoSnap.exists()){
-      console.log(sorteoSnap.data());
+     
 
      let sorteo : Sorteo = {
        id: sorteoSnap.data()['id'],
        titulo : sorteoSnap.data()['titulo'],
        participantes : sorteoSnap.data()['participantes'],
        fechaProgramada : sorteoSnap.data()['fechaProgramada'],
-       numPremios :sorteoSnap.data()['numPremios']
+       numPremios :sorteoSnap.data()['numPremios'],
+       usuario : sorteoSnap.data()['usuario']
      }
 
      return sorteo;
     }
     
     return ;
+  }
+  
+  async getIdOfUserOfReference(userRef : any){
+
+    let userSnap : DocumentSnapshot<DocumentData> =  await getDoc(userRef);
+
+    if (userSnap.exists()){
+      return userSnap.data()['id'];
+    }
+   
+    
   }
 
   

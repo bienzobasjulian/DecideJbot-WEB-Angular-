@@ -14,6 +14,10 @@ export class ResultadoComponent implements OnInit {
   resultado!: Resultado;
   demo: any;
   hayResultados: boolean = false;
+  userId : string = '';
+  currentUserId : string = '';
+
+  userCoincidencia : boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -48,9 +52,11 @@ export class ResultadoComponent implements OnInit {
               id: response!.id,
               ganadores: response!.ganadores,
               sorteo: response!.sorteo,
-              fecha : response.fecha
+              fecha : response.fecha,
+              usuario : response.usuario
               
             };
+           
 
           }
           else{
@@ -59,9 +65,33 @@ export class ResultadoComponent implements OnInit {
               id: response!.id,
               ganadores: response!.ganadores,
               sorteo: response!.sorteo,
+              usuario : response.usuario
               
             };
           }
+
+         
+           
+          //Obtener el usuario creador del resultado
+          this.sorteosService.getIdOfUserOfReference(resultado.usuario)
+          .then((response) => {
+              this.userId = response;
+
+              //Obtener el usuario actual 
+           let currentUser = this.authService.getUser();
+
+          
+
+           if (currentUser){
+              this.currentUserId = currentUser.uid;
+
+              if (this.currentUserId === this.userId){
+                this.userCoincidencia = true;
+              }
+           }
+           });
+
+           
 
           //Obtener el sorteo
           this.sorteosService

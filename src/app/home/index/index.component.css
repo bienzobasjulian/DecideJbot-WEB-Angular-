@@ -10,6 +10,7 @@
 
 .contenedorContenido {
     padding-top: 2.25rem;
+   
 }
 
 .tituloSeccion
@@ -27,6 +28,7 @@
     display : flex; 
     justify-content: center;
     flex-wrap: wrap;
+    padding-bottom: 2.25rem;
 }
 
 
