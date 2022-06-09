@@ -67,6 +67,14 @@ body {
    color: white;
   }
 
+  .btnCancelarSorteo{
+    float: right;
+  }
+
+  .btnNuevosResultados{
+    color: purple;
+  }
+
 
 
 

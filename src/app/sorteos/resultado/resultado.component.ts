@@ -4,6 +4,7 @@ import { Resultado } from '../interfaces/resultado.interface';
 import { Sorteo } from '../interfaces/sorteo.interface';
 import { SorteosService } from '../sorteos.service';
 import { AuthService } from '../../auth/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-resultado',
@@ -217,5 +218,43 @@ export class ResultadoComponent implements OnInit {
     console.log(this.resultado.sorteo.id);
 
     this.sorteosService.updateResultado(this.resultado, uidUser);
+  }
+
+  cancelarSorteo(){
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'La generación de resultados del sorteo se cancelará',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí',
+      cancelButtonText: 'No',
+      confirmButtonColor: '#4caf50',
+      cancelButtonColor: 'red',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.sorteosService.deleteResultado(this.resultado);
+        this.router.navigate(['/']);
+        
+      }
+    });
+  }
+
+  eliminarResultado(){
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Se eliminarán los resultados del sorteo',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí',
+      cancelButtonText: 'No',
+      confirmButtonColor: '#4caf50',
+      cancelButtonColor: 'red',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.sorteosService.deleteResultado(this.resultado);
+        this.router.navigate(['/']);
+        
+      }
+    });
   }
 }
