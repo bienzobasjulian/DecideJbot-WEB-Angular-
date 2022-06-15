@@ -297,6 +297,8 @@ export class SorteoSimpleComponent implements OnInit {
   }
 
   getSorteosExternos() {
+
+    this.sorteosExternos = [];
     //Comprobar si hay sesión iniciada
     let user = this.authService.getUser();
 
@@ -305,11 +307,14 @@ export class SorteoSimpleComponent implements OnInit {
 
       this.sorteosService.getSorteosExternos(uidUser).then((datos) => {
         for (let i = 0; i < datos.length; i++) {
+          
           let sorteo: Sorteo = {
+            id : datos[i].id,
             titulo: datos[i].titulo,
             participantes: datos[i].participantes,
           };
 
+          
           this.sorteosExternos.push(sorteo);
         }
 
@@ -377,6 +382,27 @@ export class SorteoSimpleComponent implements OnInit {
       }
     });
   }
+
+  showDeleteSorteoExternoModal(id : string | undefined) {
+  
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'El sorteo se borrará del navegador actual',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonColor: '#4caf50',
+      cancelButtonColor: 'red',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.sorteosService.deleteSorteo(id);
+
+       
+      }
+    });
+  }
+
 
   deleteSorteoLocal(index: number) {
     var sorteos: Sorteo[] = [];

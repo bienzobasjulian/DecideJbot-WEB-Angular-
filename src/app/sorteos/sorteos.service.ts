@@ -146,6 +146,24 @@ export class SorteosService {
     
   }
 
+  async deleteSorteo(id : string | undefined){
+
+    
+
+    if (id){
+      await deleteDoc(doc(this.db, "sorteos", id));
+    }
+    
+     
+      
+     
+    
+
+   
+    
+  }
+
+
   async getResultadoPorId(id : string){
 
    
@@ -255,6 +273,7 @@ export class SorteosService {
      let sorteo : Sorteo = {
        titulo : doc.data()['titulo'],
        participantes : doc.data()['participantes'],
+       id : doc.data()['id'],
      }
 
      this.sorteosExternos.push(sorteo);
